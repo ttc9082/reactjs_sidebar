@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sidebar Demo</title>
+    <link rel="stylesheet" href="static/css/libs/font-awesome.min.css">
+    <script src="static/js/libs/react.min.js"></script>
+    <script src="static/js/libs/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.js"></script>
+    <style>
+    html, body, #container1 {
+    	height: 100%;
+    	font-family: 'Microsoft YaHei', tahoma, 'hiragino sans gb', stheiti, 'wenquanyi micro hei', \5FAE\8F6F\96C5\9ED1, \5B8B\4F53, sans-serif;
+    	-webkit-font-smoothing: antialiased;
+    }
+
+    .left-side-bar {
+    	float: left;
+    	width: 300px;
+    	height: 100%;
+    	background-color: rgb(96, 125, 139);
+    	padding: 40px 30px;
+    	color: rgb(255, 255, 255);
+    }
+
+    .title {
+    	color: rgba(255, 255, 255, 0.7);
+    	font-size: 22px; 
+    }
+    .clear-all {
+    	float: right;
+    	font-weight: bold;
+    	font-size: 14px;
+    }
+    .category-row {
+    	margin: 20px 0;
+    }
+    .category-row .category {
+    	font-size: 16px;
+    }
+    .checker {
+	    border-radius: 5px;
+	    border: solid 1px white;
+	    height: 17px;
+	    width: 17px;
+	    display: block;
+	    float: left;
+	    margin-right: 15px;
+        margin-top: 2px;
+        opacity: 0.6;	
+    }
+    .counter {
+    	float: right;
+    }
+    .category-row .counter {
+	    border-radius: 15px;
+	    background-color: rgba(0, 0, 0, 0.27);
+	    padding: 3px 9px;
+	    font-size: 14px;
+    }
+    .fa {
+    	font-size: 12px;
+    }
+    .detail-row {
+    	padding-left: 20px;
+    	margin: 12px 0;
+    }
+
+    .detail-row {
+	    color: rgba(255, 255, 255, 0.7);
+    }
+
+    .detail-row .detail {
+    	font-size: 16px;
+    }
+
+    .detail-row .counter {
+    	margin-right: 5px;
+    }
+    </style>
+</head>
+<body>
+<div id="container1">
+	<div class="left-side-bar">
+		<span class="title">招聘职位</span>
+		<a class="clear-all">清空</a>
+		<div class="category-row">
+			<a href="javascript:;" class="checker"></a>
+			<span class="category">工程开发部门&nbsp;&nbsp;<i class="fa fa-chevron-down"></i></span>
+			<span class="counter">120</span>
+		</div>
+		<div class="detail-row">
+			<a href="javascript:;" class="checker"></a>
+			<span class="detail">iOS App测试工程师</span>
+			<span class="counter">34</span>
+		</div>
+		<div class="detail-row">
+			<a href="javascript:;" class="checker"></a>
+			<span class="detail">Android 远程工程师</span>
+			<span class="counter">61</span>
+		</div>
+		<div class="detail-row">
+			<a href="javascript:;" class="checker"></a>
+			<span class="detail">Mac开发工程师</span>
+			<span class="counter">9</span>
+		</div>
+		<div class="detail-row">
+			<a href="javascript:;" class="checker"></a>
+			<span class="detail">Web 前端开发工程师</span>
+			<span class="counter">124</span>
+		</div>
+		<div class="detail-row">
+			<a href="javascript:;" class="checker"></a>
+			<span class="detail">Mac开发工程师</span>
+			<span class="counter">9</span>
+		</div>
+		<div class="category-row">
+			<a href="javascript:;" class="checker"></a>
+			<span class="category">工程开发部门&nbsp;&nbsp;<i class="fa fa-chevron-down"></i></span>
+			<span class="counter">120</span>
+		</div>
+		<div class="detail-row">
+			<a href="javascript:;" class="checker"></a>
+			<span class="detail">iOS App测试工程师</span>
+			<span class="counter">34</span>
+		</div>
+		<div class="detail-row">
+			<a href="javascript:;" class="checker"></a>
+			<span class="detail">Android 远程工程师</span>
+			<span class="counter">61</span>
+		</div>
+		<div class="detail-row">
+			<a href="javascript:;" class="checker"></a>
+			<span class="detail">Mac开发工程师</span>
+			<span class="counter">9</span>
+		</div>
+		<div class="detail-row">
+			<a href="javascript:;" class="checker"></a>
+			<span class="detail">Web 前端开发工程师</span>
+			<span class="counter">124</span>
+		</div>
+		<div class="detail-row">
+			<a href="javascript:;" class="checker"></a>
+			<span class="detail">Mac开发工程师</span>
+			<span class="counter">9</span>
+		</div>
+	</div>
+	<div class="right-side-area"></div>
+</div>
+
+<div id="container"></div>
+
+<script type="text/babel">
+	var Diaola =  React.createClass({
+		render: function(){
+			return (
+				<h1>
+				Hello React -from 
+				{this.props.name}
+				</h1>
+				)
+		}
+	})
+      ReactDOM.render(
+        <Diaola name='Tianqi'/>,
+        document.getElementById('container')
+      );
+</script>
+</body>
+</html>
