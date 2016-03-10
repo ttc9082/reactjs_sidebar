@@ -1,0 +1,100 @@
+body {
+	margin: 0;
+	height: 100%;
+	font-family: 'Microsoft YaHei', tahoma, 'hiragino sans gb', stheiti, 'wenquanyi micro hei', \5FAE\8F6F\96C5\9ED1, \5B8B\4F53, sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+#container {
+    position: absolute;
+	height: 100%;	
+}
+
+a {
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+}
+
+.left-side-bar {
+	float: left;
+	width: 320px;
+	height: 100%;
+	background-color: rgb(96, 125, 139);
+	padding: 40px 30px;
+	color: rgb(255, 255, 255);
+}
+
+.title {
+	color: rgba(255, 255, 255, 0.7);
+	font-size: 22px; 
+}
+
+.clear-all {
+	float: right;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.department-row {
+	margin: 20px 0;
+}
+
+.department-row .department {
+	font-size: 14px;
+}
+
+.checker {
+    position: relative;
+    border-radius: 5px;
+    border: solid 1px white;
+    height: 15px;
+    width: 15px;
+    display: block;
+    float: left;
+    margin-right: 14px;
+    margin-top: 3px;
+    opacity: 0.6;	
+}
+
+.checker i {
+	display: none;
+	position: absolute;
+    left: 1.5px;
+    top: 2px;
+}
+
+.checker.active i {
+	display: block;
+}
+
+.counter {
+	float: right;
+}
+
+.department-row .counter {
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.27);
+    padding: 3px 9px;
+    font-size: 14px;
+}
+
+.fa {
+	font-size: 12px;
+}
+
+.position-row {
+	padding-left: 30px;
+	margin: 10px 0;
+}
+
+.position-row {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.position-row .position {
+	font-size: 14px;
+}
+
+.position-row .counter {
+	margin-right: 5px;
+}

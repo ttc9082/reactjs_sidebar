@@ -4,167 +4,130 @@
     <meta charset="UTF-8">
     <title>Sidebar Demo</title>
     <link rel="stylesheet" href="static/css/libs/font-awesome.min.css">
-    <script src="static/js/libs/react.min.js"></script>
-    <script src="static/js/libs/react-dom.min.js"></script>
+    <link rel="stylesheet" href="static/css/pages/sidebar.css">
+    <script src="static/js/libs/react.js"></script>
+    <script src="static/js/libs/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.js"></script>
-    <style>
-    html, body, #container1 {
-    	height: 100%;
-    	font-family: 'Microsoft YaHei', tahoma, 'hiragino sans gb', stheiti, 'wenquanyi micro hei', \5FAE\8F6F\96C5\9ED1, \5B8B\4F53, sans-serif;
-    	-webkit-font-smoothing: antialiased;
-    }
-
-    .left-side-bar {
-    	float: left;
-    	width: 300px;
-    	height: 100%;
-    	background-color: rgb(96, 125, 139);
-    	padding: 40px 30px;
-    	color: rgb(255, 255, 255);
-    }
-
-    .title {
-    	color: rgba(255, 255, 255, 0.7);
-    	font-size: 22px; 
-    }
-    .clear-all {
-    	float: right;
-    	font-weight: bold;
-    	font-size: 14px;
-    }
-    .category-row {
-    	margin: 20px 0;
-    }
-    .category-row .category {
-    	font-size: 16px;
-    }
-    .checker {
-	    border-radius: 5px;
-	    border: solid 1px white;
-	    height: 17px;
-	    width: 17px;
-	    display: block;
-	    float: left;
-	    margin-right: 15px;
-        margin-top: 2px;
-        opacity: 0.6;	
-    }
-    .counter {
-    	float: right;
-    }
-    .category-row .counter {
-	    border-radius: 15px;
-	    background-color: rgba(0, 0, 0, 0.27);
-	    padding: 3px 9px;
-	    font-size: 14px;
-    }
-    .fa {
-    	font-size: 12px;
-    }
-    .detail-row {
-    	padding-left: 20px;
-    	margin: 12px 0;
-    }
-
-    .detail-row {
-	    color: rgba(255, 255, 255, 0.7);
-    }
-
-    .detail-row .detail {
-    	font-size: 16px;
-    }
-
-    .detail-row .counter {
-    	margin-right: 5px;
-    }
-    </style>
 </head>
 <body>
-<div id="container1">
-	<div class="left-side-bar">
-		<span class="title">招聘职位</span>
-		<a class="clear-all">清空</a>
-		<div class="category-row">
-			<a href="javascript:;" class="checker"></a>
-			<span class="category">工程开发部门&nbsp;&nbsp;<i class="fa fa-chevron-down"></i></span>
-			<span class="counter">120</span>
-		</div>
-		<div class="detail-row">
-			<a href="javascript:;" class="checker"></a>
-			<span class="detail">iOS App测试工程师</span>
-			<span class="counter">34</span>
-		</div>
-		<div class="detail-row">
-			<a href="javascript:;" class="checker"></a>
-			<span class="detail">Android 远程工程师</span>
-			<span class="counter">61</span>
-		</div>
-		<div class="detail-row">
-			<a href="javascript:;" class="checker"></a>
-			<span class="detail">Mac开发工程师</span>
-			<span class="counter">9</span>
-		</div>
-		<div class="detail-row">
-			<a href="javascript:;" class="checker"></a>
-			<span class="detail">Web 前端开发工程师</span>
-			<span class="counter">124</span>
-		</div>
-		<div class="detail-row">
-			<a href="javascript:;" class="checker"></a>
-			<span class="detail">Mac开发工程师</span>
-			<span class="counter">9</span>
-		</div>
-		<div class="category-row">
-			<a href="javascript:;" class="checker"></a>
-			<span class="category">工程开发部门&nbsp;&nbsp;<i class="fa fa-chevron-down"></i></span>
-			<span class="counter">120</span>
-		</div>
-		<div class="detail-row">
-			<a href="javascript:;" class="checker"></a>
-			<span class="detail">iOS App测试工程师</span>
-			<span class="counter">34</span>
-		</div>
-		<div class="detail-row">
-			<a href="javascript:;" class="checker"></a>
-			<span class="detail">Android 远程工程师</span>
-			<span class="counter">61</span>
-		</div>
-		<div class="detail-row">
-			<a href="javascript:;" class="checker"></a>
-			<span class="detail">Mac开发工程师</span>
-			<span class="counter">9</span>
-		</div>
-		<div class="detail-row">
-			<a href="javascript:;" class="checker"></a>
-			<span class="detail">Web 前端开发工程师</span>
-			<span class="counter">124</span>
-		</div>
-		<div class="detail-row">
-			<a href="javascript:;" class="checker"></a>
-			<span class="detail">Mac开发工程师</span>
-			<span class="counter">9</span>
-		</div>
-	</div>
-	<div class="right-side-area"></div>
-</div>
-
 <div id="container"></div>
 
 <script type="text/babel">
-	var Diaola =  React.createClass({
+	var LeftSideBar = React.createClass({
+		getInitialState: function() {
+			return {
+				check: false
+			};
+		},
+		clearAll: function(){
+			this.setState({
+				check: false
+			});
+		},
 		render: function(){
+			var rows = [];
+			this.props.titles.forEach(function(department) {
+				rows.push(<DepartmentRow title={department.department} counter={department.counter} key={department.department} position={department.position} check={this.state.check} />)
+			}.bind(this));
 			return (
-				<h1>
-				Hello React -from 
-				{this.props.name}
-				</h1>
-				)
+				<div className="left-side-bar">
+					<span className="title">招聘职位</span>
+					<Clearer onClear={this.clearAll} />
+					{rows}
+				</div>
+			);
 		}
 	})
-      ReactDOM.render(
-        <Diaola name='Tianqi'/>,
-        document.getElementById('container')
-      );
+
+	var Clearer = React.createClass({
+		handleClick: function(){
+			this.props.onClear();
+		},
+
+		render: function() {
+			return <a href="javascript:;" className="clear-all" onClick={this.handleClick}>清空</a>
+		}
+	})
+
+	var CheckBoxMixin = {
+		getInitialState: function(){
+			return {
+				check: this.props.check
+			}
+		},
+		handleClick: function(){
+			this.setState({check: !this.state.check});
+		},
+		componentWillReceiveProps: function(nextProp){
+			if (typeof nextProp.check === 'boolean'){
+				this.setState({check: nextProp.check})
+			}
+		},
+		isActive: function(){
+			return 'checker' + (this.state.check == true ? ' active' : '');
+		}
+	};
+	var DepartmentRow = React.createClass({
+		mixins: [CheckBoxMixin],
+		render: function(){
+			var rows = [];
+			var counter = 0;
+			this.props.position.forEach(function(position){
+				rows.push(
+					<PositionRow title={position.title} counter={position.counter} key={position.title} check={this.state.check} />
+			    );
+				counter += position.counter;
+			}.bind(this))
+			return (
+			<div>	
+				<div className="department-row">
+					<a href="javascript:;" className={this.isActive()} onClick={this.handleClick}>
+						<i className="fa fa-check"></i>
+					</a>
+					<a href="javascript:;" className="department">{this.props.title}&nbsp;&nbsp;<i className="fa fa-chevron-down"></i></a>
+					<span className="counter">{counter}</span>
+				</div>
+				{rows}
+			</div>	
+			)
+		}
+	})
+	
+	var PositionRow = React.createClass({
+		mixins: [CheckBoxMixin],
+		render: function(){
+			return (
+				<div className="position-row">
+					<a href="javascript:;" className={this.isActive()} onClick={this.handleClick}>
+						<i className="fa fa-check"></i>
+					</a>
+					<span className="position">{this.props.title}</span>
+					<span className="counter">{this.props.counter}</span>
+				</div>
+			);
+		}
+	})
+
+	var TITLES = [
+		{"department": "工程开发部门", "position": [
+			{"title": "Mac 开发工程师", "counter": 9},
+			{"title": "iOS App测试工程师", "counter": 17},
+			{"title": "Android 远程控制工程师", "counter": 61},
+			{"title": "Web 前端工程师", "counter": 31},
+			{"title": "Android 多媒体软件开发工程师", "counter": 2},
+		]},
+		{"department": "产品设计部门", "position": [
+			{"title": "网页设计师", "counter": 47},
+			{"title": "ID / 工业设计师", "counter": 39},
+			{"title": "视觉 / GUI设计师", "counter": 42},
+			{"title": "平面设计师", "counter": 8},
+		]}
+	]
+
+    ReactDOM.render(
+	  <LeftSideBar titles={TITLES}/>,
+	  document.getElementById('container')
+    );
 </script>
 </body>
 </html>
